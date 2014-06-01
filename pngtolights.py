@@ -39,24 +39,19 @@ extern RGAM_RGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS] =
     
     string += " },\n"
   
-  string += "\n};\n"
+  string += "};\n"
   return string
 
 if __name__ == "__main__":
-  print("pngtolights.py");
   filename = 'data.png'
   image = Image.open(filename);
   png = numpy.asarray(image)
   
-  columns = len(png)
-  rows = len(png[0])
+  columns = png.shape[1]
+  rows = png.shape[0]
   
   header = constructHeaderFileText(columns, rows)
   printStringToFile(header, "data.h")
   
   data = constructDataFileText(png, "data");
   printStringToFile(data, "data.c");
-  
-  # for col in png:
-  #   for row in col:
-  #     print (int(row[2]))
