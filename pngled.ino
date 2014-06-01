@@ -17,11 +17,13 @@ void setup() {
 }
 
 void loop() {
-  Serial.print((byte)data[_frame][0][0]);
+  Serial.print(data[_frame][0].red);
   Serial.print(", ");
-  Serial.print((byte)data[_frame][0][1]);
+  Serial.print(data[_frame][0].green);
   Serial.print(", ");
-  Serial.println((byte)data[_frame][0][2]);
+  Serial.println(data[_frame][0].blue);
   
   if (++_frame == RGAM_DATA_COLUMNS) _frame = 0;
+  
+  delay(50);
 }

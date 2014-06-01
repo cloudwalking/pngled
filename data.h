@@ -1,6 +1,6 @@
 #include "RGAM_RGB.h"
 
-#define RGAM_DATA_COLUMNS 1
+#define RGAM_DATA_COLUMNS 3
 #define RGAM_DATA_ROWS 1
 
-extern byte data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS][3];
+extern RGAM_RGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS];
