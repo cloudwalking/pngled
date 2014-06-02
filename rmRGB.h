@@ -1,7 +1,7 @@
 #include "Arduino.h"
-struct RGAM_RGB {
+struct rmRGB {
   byte red;
   byte green;
   byte blue;
 };
-typedef struct RGAM_RGB RGAM_RGB;
+typedef struct rmRGB rmRGB;

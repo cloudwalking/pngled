@@ -11,24 +11,24 @@ def printStringToFile(string, filename):
 
 def constructHeaderFileText(columns, rows):
   string = """
-#include \"RGAM_RGB.h\"
+#include \"rmRGB.h\"
 #define RGAM_DATA_COLUMNS %s
 #define RGAM_DATA_ROWS %s
-extern RGAM_RGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS];
+extern rmRGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS];
 """ % (str(columns), str(rows))
   return string
 
 def constructDataFileText(image, headerFilename):
   string = """
 #include "%s.h"
-extern RGAM_RGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS] =
+extern rmRGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS] =
 """ % headerFilename
   string += "{\n"
   
   columns = image.shape[1]
   
   for i in range(0, columns):
-    string += " { //" + str(i) + "\n"
+    string += " { // col " + str(i) + "\n"
     
     for row in image[ : ,i]:
       string += "  { "
@@ -43,9 +43,11 @@ extern RGAM_RGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS] =
   return string
 
 if __name__ == "__main__":
-  filename = 'data.png'
+  filename = "data.png"
   image = Image.open(filename);
   png = numpy.asarray(image)
+  
+  print png.shape
   
   columns = png.shape[1]
   rows = png.shape[0]

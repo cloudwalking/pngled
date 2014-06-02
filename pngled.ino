@@ -22,11 +22,16 @@ void setup() {
 void loop() {
   Serial.println(_frame);
   for (int row = 0; row < RGAM_DATA_ROWS; row++) {
-    Serial.print(row); Serial.print(" - ");
-    uint16_t red = (int)data[_frame][row].red;
+    if (row >= LED_COUNT) break;
+
+    uint16_t red   = (int)data[_frame][row].red;
     uint16_t green = (int)data[_frame][row].green;
-    uint16_t blue = (int)data[_frame][row].blue;
-    _pixels.setPixelColor(row, _pixels.Color(red, green, blue));
+    uint16_t blue  = (int)data[_frame][row].blue;
+    Serial.println(red);
+    
+    uint32_t color = _pixels.Color(red, green, blue);
+
+    _pixels.setPixelColor(row, color);
   }
   
   _pixels.show();
@@ -35,5 +40,5 @@ void loop() {
   
   if (++_frame == RGAM_DATA_COLUMNS) _frame = 0;
   
-  delay(20);
+  delay(40);
 }
