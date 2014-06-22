@@ -1,7 +1,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #include "data.h"
-#include "rgamRGB.h"
+#include "rmRGB.h"
 
 #define LED_COUNT 8
 #define LED_DATA_PIN 3
