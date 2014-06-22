@@ -27,9 +27,9 @@ void loop() {
   for (int32_t row = 0; row < RGAM_DATA_ROWS; row++) {
     if (row >= LED_COUNT) break;
 
-    rgamRGB pixel = data[_frame][row];
+    rmRGB pixel = data[_frame][row];
 
-    uint16_t red   = pixel.red;
+    uint16_t red   = pgm_read_byte(&(pixel.red));
     uint16_t green = pixel.green;
     uint16_t blue  = pixel.blue;
     

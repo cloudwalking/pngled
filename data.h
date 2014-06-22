@@ -3,4 +3,4 @@
 #include "rmRGB.h"
 #define RGAM_DATA_COLUMNS 84
 #define RGAM_DATA_ROWS 8
-extern rmRGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS];
+extern /*PROGMEM*/ rmRGB data[RGAM_DATA_COLUMNS][RGAM_DATA_ROWS];
