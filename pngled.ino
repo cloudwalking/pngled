@@ -29,9 +29,8 @@ void loop() {
     byte *pixel = data[_frame][row];
 
     uint16_t red   = (int) pgm_read_byte(pixel);
-    uint16_t green = (int) pgm_read_byte(pixel + sizeof(byte));
-    uint16_t blue  = (int) pgm_read_byte(pixel + 2 * sizeof(byte));
-    Serial.println(red);
+    uint16_t green = (int) pgm_read_byte(&(pixel[1]));
+    uint16_t blue  = (int) pgm_read_byte(&(pixel[2]));
     
     uint32_t color = _pixels.Color(red, green, blue);
 
