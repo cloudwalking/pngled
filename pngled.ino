@@ -1,10 +1,12 @@
 #include <Adafruit_NeoPixel.h>
 
 #include "data.h"
+#include "rgamRGB.h"
 
 #define LED_COUNT 8
 #define LED_DATA_PIN 3
 #define LED_DEFAULT_BRIGHTNESS 10
+#define DELAY 60
 
 Adafruit_NeoPixel _pixels = Adafruit_NeoPixel(LED_COUNT, LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
 
@@ -21,24 +23,24 @@ void setup() {
 
 void loop() {
   Serial.println(_frame);
-  for (int row = 0; row < RGAM_DATA_ROWS; row++) {
+
+  for (int32_t row = 0; row < RGAM_DATA_ROWS; row++) {
     if (row >= LED_COUNT) break;
 
-    uint16_t red   = (int)data[_frame][row].red;
-    uint16_t green = (int)data[_frame][row].green;
-    uint16_t blue  = (int)data[_frame][row].blue;
-    Serial.println(red);
+    rgamRGB pixel = data[_frame][row];
+
+    uint16_t red   = pixel.red;
+    uint16_t green = pixel.green;
+    uint16_t blue  = pixel.blue;
     
     uint32_t color = _pixels.Color(red, green, blue);
 
     _pixels.setPixelColor(row, color);
   }
-  
   _pixels.show();
-  Serial.println();
-  
   
   if (++_frame == RGAM_DATA_COLUMNS) _frame = 0;
   
-  delay(40);
+  delay(DELAY);
+  Serial.println();
 }
