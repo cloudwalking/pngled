@@ -1,7 +1,6 @@
 #include <Adafruit_NeoPixel.h>
 
 #include "data.h"
-#include "rmRGB.h"
 
 #define LED_COUNT 8
 #define LED_DATA_PIN 3
@@ -22,16 +21,17 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(_frame);
+  Serial.print("frm "); Serial.println(_frame);
 
   for (int32_t row = 0; row < RGAM_DATA_ROWS; row++) {
     if (row >= LED_COUNT) break;
 
-    rmRGB pixel = data[_frame][row];
+    byte *pixel = data[_frame][row];
 
-    uint16_t red   = pgm_read_byte(&(pixel.red));
-    uint16_t green = pixel.green;
-    uint16_t blue  = pixel.blue;
+    uint16_t red   = (int) pgm_read_byte(pixel);
+    uint16_t green = (int) pgm_read_byte(pixel + sizeof(byte));
+    uint16_t blue  = (int) pgm_read_byte(pixel + 2 * sizeof(byte));
+    Serial.println(red);
     
     uint32_t color = _pixels.Color(red, green, blue);
 
