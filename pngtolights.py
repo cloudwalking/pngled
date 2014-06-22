@@ -2,6 +2,7 @@
 
 from PIL import Image
 import numpy
+import sys
 
 def printStringToFile(string, filename):
   file = open(filename, "w");
