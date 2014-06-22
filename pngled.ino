@@ -5,7 +5,7 @@
 #define LED_COUNT 8
 #define LED_DATA_PIN 3
 #define LED_DEFAULT_BRIGHTNESS 10
-#define DELAY 60
+#define DELAY 50
 
 Adafruit_NeoPixel _pixels = Adafruit_NeoPixel(LED_COUNT, LED_DATA_PIN, NEO_GRB + NEO_KHZ800);
 
