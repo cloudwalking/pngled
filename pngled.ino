@@ -2,7 +2,7 @@
 
 #include "data.h"
 
-#define LED_COUNT 8
+#define LED_COUNT 50 // should equal RGAM_DATA_ROWS
 #define LED_DATA_PIN 3
 #define LED_DEFAULT_BRIGHTNESS 10
 #define DELAY 50
